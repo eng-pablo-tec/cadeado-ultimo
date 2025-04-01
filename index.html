@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadeado Lógico - Pergunta Difícil</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f3f3;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+        }
+        .lock {
+            font-size: 50px;
+            color: red;
+        }
+        .unlocked {
+            color: green;
+        }
+        input {
+            padding: 10px;
+            margin-top: 10px;
+            text-align: center;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            margin-top: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+        #message {
+            display: none;
+            margin-top: 20px;
+            font-size: 16px;
+            color: black;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="lockIcon" class="lock">🔒</div>
+        <h2>Desbloqueie o Cadeado</h2>
+        <p>Agora, leia atentamente o seguinte enigma muito complexo:</p>
+        <pre>
+Sabendo que a massa do Sol é de aproximadamente 1,989 × 10^30 kg, e que a velocidade da luz no vácuo é 299.792.458 metros por segundo, além disso, considerando as luas de Júpiter com seus diversos períodos orbitais e propriedades, como o fato de que a gravidade na superfície de Ganimedes é de 1,428 m/s², e que a pressão da água a 3.000 pés abaixo da superfície do mar é de aproximadamente 127 psi, levando em conta a temperatura média do núcleo terrestre que gira em torno de 5.500°C, o ângulo de inclinação do eixo de Urano e outros fatores cósmicos e físicos de relevância astronômica... Agora, com todos esses dados, resolva a seguinte pergunta simples:
+
+Quanto é 1 + 1?
+        </pre>
+        <input type="password" id="codeInput" placeholder="Digite sua resposta aqui">
+        <br>
+        <button onclick="checkCode()">Desbloquear</button>
+        <p id="message">ACERTOU! Você desvendou o enigma corretamente.</p>
+    </div>
+
+    <script>
+        function checkCode() {
+            const correctCode = "2"; // A resposta correta é 2
+            const userCode = document.getElementById("codeInput").value.trim(); // Pegando o código do usuário e removendo espaços extras
+            const lockIcon = document.getElementById("lockIcon");
+            const message = document.getElementById("message");
+
+            // Verifica se o código do usuário é correto
+            if (userCode === correctCode) {
+                lockIcon.textContent = "🔓"; // Cadeado aberto
+                lockIcon.classList.add("unlocked");
+                setTimeout(() => {
+                    message.style.display = "block"; // Exibe a mensagem de sucesso
+                }, 500);
+            } else {
+                lockIcon.textContent = "🔒"; // Cadeado fechado
+                lockIcon.classList.remove("unlocked");
+                message.style.display = "none"; // Esconde a mensagem de sucesso
+            }
+        }
+    </script>
+</body>
+</html>
